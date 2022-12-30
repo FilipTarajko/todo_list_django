@@ -5,12 +5,14 @@
     <th>Tasks</th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
   {% for task in tasks %}
   <tr>
     <td>{{task.title}}</td>
     <td><a href="{% url 'task' task.id %}">view</a></td>
     <td><a href="{% url 'task-update' task.id %}">edit</a></td>
+    <td><a href="{% url 'task-delete' task.id %}">delete</a></td>
   </tr>
   {% empty %}
   <tr>
