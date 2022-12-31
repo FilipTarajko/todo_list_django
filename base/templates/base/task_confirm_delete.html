@@ -4,14 +4,17 @@
 <!-- content -->
 
 <header>
+  <div>
+    <h1>Delete task</h1>
+  </div>
   <a href="{% url 'tasks' %}">&#8592; back</a>
 </header>
-
 <div class="card-body">
   <form method="POST">
     {% csrf_token %}
-    <p>Are you sure you want to delete this task? "{{task}}"</p>
+    <p>Are you sure you want to delete the "{{task}}" task?</p>
     <input class="button" type="submit" value="Delete" />
+    <a class="button" href="{% url 'tasks' %}">Cancel</a>
   </form>
 </div>
 

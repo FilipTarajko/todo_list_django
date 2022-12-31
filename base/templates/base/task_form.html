@@ -3,7 +3,14 @@
 {% block content %}
 <!-- content -->
 
+<!-- <header>
+  <a href="{% url 'tasks' %}">&#8592; back</a>
+</header> -->
+
 <header>
+  <div>
+    <h1>Add new task</h1>
+  </div>
   <a href="{% url 'tasks' %}">&#8592; back</a>
 </header>
 
@@ -13,6 +20,7 @@
     <!-- ^ against c-s req forgery-->
     {{form.as_p}}
     <input class="button" type="submit" value="Submit" />
+    <a class="button" href="{% url 'tasks' %}">Cancel</a>
   </form>
 </div>
 
