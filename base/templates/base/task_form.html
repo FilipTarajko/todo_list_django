@@ -3,15 +3,17 @@
 {% block content %}
 <!-- content -->
 
-<h3>new task form</h3>
+<header>
+  <a href="{% url 'tasks' %}">&#8592; back</a>
+</header>
 
-<a href="{% url 'tasks' %}">go back</a>
-
-<form method="POST" action="">
-  {% csrf_token %}
-  <!-- ^ against c-s req forgery-->
-  {{form.as_p}}
-  <input type="submit" value="Submit" />
-</form>
+<div class="card-body">
+  <form method="POST" action="">
+    {% csrf_token %}
+    <!-- ^ against c-s req forgery-->
+    {{form.as_p}}
+    <input class="button" type="submit" value="Submit" />
+  </form>
+</div>
 
 {% endblock content %}
