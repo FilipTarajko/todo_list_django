@@ -9,17 +9,23 @@
 
 <h1>My TODO List</h1>
 
+<form method="get">
+  <input type="text" name="search-area" value="{{search_input}}" />
+  <input type="submit" value="Search" />
+</form>
+
 <table>
   <tr>
-    <th>Tasks - {{count}} to go!</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    {% if search_input == '' %}
+    <th colspan="3">Tasks - {{count}}/{{totalcount}} to go!</th>
+    {% else %}
+    <th colspan="3">Tasks filtered by "{{search_input}}" - {{count}}/{{totalcount}} to go!</th>
+    {% endif %}
   </tr>
   {% for task in tasks %}
   <tr>
     <td>{{task.title}}</td>
-    <td><a href="{% url 'task' task.id %}">view</a></td>
+    <!-- <td><a href="{% url 'task' task.id %}">view</a></td> -->
     <td><a href="{% url 'task-update' task.id %}">edit</a></td>
     <td><a href="{% url 'task-delete' task.id %}">delete</a></td>
   </tr>
