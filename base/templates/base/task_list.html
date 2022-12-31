@@ -1,3 +1,7 @@
+{% extends 'base/main.html' %}
+<!-- displaying the view as content of base/main.html -->
+{% block content %}
+<!-- content -->
 {% if request.user.is_authenticated %}
 <p>{{request.user}}</p>
 <a href="{% url 'logout' %}">Log out</a>
@@ -37,3 +41,4 @@
 </table>
 
 <a href="{% url 'task-create' %}">Add new task</a>
+{% endblock content %}
