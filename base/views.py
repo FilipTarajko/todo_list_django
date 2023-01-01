@@ -11,6 +11,11 @@ from django.contrib.auth import login
 
 from .models import Task, UsersSettings
 
+def apply_settings(self, context):
+  context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
+  context['display_settings'] = True
+  return context
+
 class CustomLoginView(LoginView):
   template_name = 'base/login.html'
   fields = '__all__'
@@ -58,9 +63,7 @@ class TaskList(LoginRequiredMixin, ListView):
     context['totalcount'] = context['tasks'].count()
     context['search_input'] = search_input
 
-    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
-
-    return context
+    return apply_settings(self, context)
 
 class TaskDetail(LoginRequiredMixin, DetailView):
   model = Task
@@ -69,8 +72,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
-    return context
+
+    return apply_settings(self, context)
 
 class TaskCreate(LoginRequiredMixin, CreateView):
   model = Task
@@ -83,8 +86,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
-    return context
+    return apply_settings(self, context)
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
   model = Task
@@ -93,8 +95,7 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
-    return context
+    return apply_settings(self, context)
 
 class DeleteView(LoginRequiredMixin, DeleteView):
   model = Task
@@ -103,5 +104,11 @@ class DeleteView(LoginRequiredMixin, DeleteView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
-    return context
+    return apply_settings(self, context)
+  
+def themeChangeView(request):
+  if UsersSettings.objects.filter(user=request.user).exists():
+    settings = UsersSettings.objects.get(user=request.user)
+    settings.darkmode = not settings.darkmode
+    settings.save()
+  return redirect('tasks')

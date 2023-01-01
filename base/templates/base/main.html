@@ -20,5 +20,24 @@
   </head>
   <body>
     <div class="container">{% block content %} {% endblock content %}</div>
+    {% if display_settings %}
+    <div class="container">
+      <header>
+        <h2 style="font-size: 24px">Settings</h2>
+      </header>
+      <div class="card-body settings">
+        <a href="{% url 'theme' %}">
+          <div class="task-title">
+            {% if users_settings.darkmode %}
+            <div class="task-complete-icon"></div>
+            {% else %}
+            <div class="task-incomplete-icon"></div>
+            {% endif %}
+            <div style="padding-left: 8px">dark mode</div>
+          </div></a
+        >
+      </div>
+    </div>
+    {% endif %}
   </body>
 </html>

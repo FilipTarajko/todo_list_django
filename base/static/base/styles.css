@@ -126,3 +126,12 @@ label {
 .card-body {
   padding: 20px;
 }
+
+.settings {
+  color: var(--setting-title-color);
+}
+
+.settings a {
+  color: var(--setting-title-color);
+  text-decoration: none;
+}
