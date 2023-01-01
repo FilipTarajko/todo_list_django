@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login  
 
 from .models import Task, UsersSettings
+from django.core.exceptions import PermissionDenied
 
 def apply_settings(self, context):
   context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
@@ -72,7 +73,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-
+    if context.task.user != self.request.user:
+      raise PermissionDenied()
     return apply_settings(self, context)
 
 class TaskCreate(LoginRequiredMixin, CreateView):
@@ -95,6 +97,8 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+    if context["task"].user != self.request.user:
+      raise PermissionDenied()
     return apply_settings(self, context)
 
 class DeleteView(LoginRequiredMixin, DeleteView):
@@ -104,6 +108,8 @@ class DeleteView(LoginRequiredMixin, DeleteView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+    if context['task'].user != self.request.user:
+      raise PermissionDenied()
     return apply_settings(self, context)
   
 def themeChangeView(request):
