@@ -14,3 +14,8 @@ class Task(models.Model):
     
     class Meta:
         ordering = ['complete']
+
+
+class UsersSettings(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+    darkmode = models.BooleanField(default=False)

@@ -1,0 +1,128 @@
+body {
+  background-color: var(--body-bgcolor);
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* font-family: "Lobster", serif; */
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0px;
+}
+
+td {
+  padding: 2px 6px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: var(--container-bgcolor);
+  border-radius: 12px 12px 12px 12px;
+  padding: 0px 0px 12px 0px;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--header-color);
+  padding: 16px;
+  border-radius: 12px 12px 0 0;
+  background: var(--header-gradient);
+}
+
+header a {
+  color: var(--header-color);
+  text-decoration: none;
+}
+
+.task-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--container-bgcolor);
+  border-top: 1px solid var(--task-border-top-color);
+}
+
+.task-title {
+  display: flex;
+}
+
+.task-title a {
+  text-decoration: none;
+  color: var(--task-title-color);
+  margin-left: 8px;
+}
+
+.task-complete-icon {
+  height: 20px;
+  width: 20px;
+  background-color: var(--task-circle-complete-color);
+  border-radius: 50%;
+}
+
+.task-incomplete-icon {
+  height: 20px;
+  width: 20px;
+  background-color: var(--task-circle-incomplete-color);
+  border-radius: 50%;
+}
+
+.delete-link {
+  text-decoration: none;
+  font-weight: 900;
+  color: var(--task-delete-cross-color);
+  font-size: 26px;
+  line-height: 0;
+}
+
+#search-add-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px 16px;
+}
+
+#add-link {
+  color: var(--task-add-plus-color);
+  text-decoration: none;
+  font-size: 36px;
+  text-shadow: var(--task-add-plus-shadow);
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  border: 1px solid var(--input-theme-color);
+  border-radius: 5px;
+  padding: 10px;
+  width: 90%;
+}
+
+label {
+  padding-top: 10px !important;
+  display: block;
+}
+
+.button {
+  border: 1px solid var(--input-theme-color);
+  background-color: var(--button-bgcolor);
+  color: var(--input-theme-color);
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card-body {
+  padding: 20px;
+}

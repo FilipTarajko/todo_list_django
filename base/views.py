@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login  
 
-from .models import Task
+from .models import Task, UsersSettings
 
 class CustomLoginView(LoginView):
   template_name = 'base/login.html'
@@ -25,9 +25,14 @@ class RegisterPage(FormView):
   redirect_authenticated_user = True
   success_url = reverse_lazy('tasks')
 
+  def form_invalid(self, form):
+    return super().form_invalid(form)
+
   def form_valid(self, form):
     user = form.save()
     if user is not None:
+      new_users_settings = UsersSettings(user=user)
+      new_users_settings.save()
       login(self.request, user)
     return super(RegisterPage, self).form_valid(form)
   
@@ -53,12 +58,19 @@ class TaskList(LoginRequiredMixin, ListView):
     context['totalcount'] = context['tasks'].count()
     context['search_input'] = search_input
 
+    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
+
     return context
 
 class TaskDetail(LoginRequiredMixin, DetailView):
   model = Task
   context_object_name = 'task'
   template_name = 'base/task.html'
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
+    return context
 
 class TaskCreate(LoginRequiredMixin, CreateView):
   model = Task
@@ -69,12 +81,27 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super(TaskCreate, self).form_valid(form)
 
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
+    return context
+
 class TaskUpdate(LoginRequiredMixin, UpdateView):
   model = Task
   fields = ['title', 'description', 'complete']
   success_url = reverse_lazy('tasks')
 
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
+    return context
+
 class DeleteView(LoginRequiredMixin, DeleteView):
   model = Task
   context_object_name = 'task'
   success_url = reverse_lazy('tasks')
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
+    return context
