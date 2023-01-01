@@ -18,4 +18,5 @@ class Task(models.Model):
 
 class UsersSettings(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
-    darkmode = models.BooleanField(default=False)
+    darkmode = models.BooleanField(default=True)
+    hide_completed = models.BooleanField(default=False)

@@ -27,13 +27,23 @@
       </header>
       <div class="card-body settings">
         <a href="{% url 'theme' %}">
-          <div class="task-title">
+          <div class="task-title" style="padding-top: 12px">
             {% if users_settings.darkmode %}
             <div class="task-complete-icon"></div>
             {% else %}
             <div class="task-incomplete-icon"></div>
             {% endif %}
             <div style="padding-left: 8px">dark mode</div>
+          </div></a
+        >
+        <a href="{% url 'hide_completed' %}">
+          <div class="task-title" style="padding-top: 12px">
+            {% if users_settings.hide_completed %}
+            <div class="task-complete-icon"></div>
+            {% else %}
+            <div class="task-incomplete-icon"></div>
+            {% endif %}
+            <div style="padding-left: 8px">hide completed</div>
           </div></a
         >
       </div>

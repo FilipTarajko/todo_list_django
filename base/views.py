@@ -112,3 +112,10 @@ def themeChangeView(request):
     settings.darkmode = not settings.darkmode
     settings.save()
   return redirect('tasks')
+  
+def toggleHideCompleted(request):
+  if UsersSettings.objects.filter(user=request.user).exists():
+    settings = UsersSettings.objects.get(user=request.user)
+    settings.hide_completed = not settings.hide_completed
+    settings.save()
+  return redirect('tasks')
