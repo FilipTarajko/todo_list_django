@@ -111,6 +111,14 @@ class DeleteView(LoginRequiredMixin, DeleteView):
     if context['task'].user != self.request.user:
       raise PermissionDenied()
     return apply_settings(self, context)
+
+def toggleTaskCompleted(request):
+  requestedTaskId = request.GET.get('id')
+  if Task.objects.filter(user=request.user, id=requestedTaskId).exists():
+    task = Task.objects.get(user=request.user, id=requestedTaskId)
+    task.complete = not task.complete
+    task.save()
+  return redirect('tasks')
   
 def themeChangeView(request):
   if UsersSettings.objects.filter(user=request.user).exists():

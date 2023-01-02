@@ -37,9 +37,9 @@
     <!-- completion icon -->
     <div style="grid-area: completion">
       {% if task.complete %}
-      <div class="task-complete-icon"></div>
+      <a href="/task-toggle-status/?id={{task.id}}" class="task-complete-icon"></a>
       {% else %}
-      <div class="task-incomplete-icon"></div>
+      <a href="/task-toggle-status/?id={{task.id}}" class="task-incomplete-icon"></a>
       {% endif %}
     </div>
     <!-- task title and text -->
