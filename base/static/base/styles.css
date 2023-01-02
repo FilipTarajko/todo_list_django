@@ -67,18 +67,6 @@ header a {
   grid-area: description;
 }
 
-@media (max-width: 600px) {
-  .task-wrapper {
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      "completion title deletion"
-      "description description description";
-  }
-  .task-description {
-    font-size: 0.9rem;
-  }
-}
-
 .text {
   text-decoration: none;
   color: var(--task-title-color);
@@ -112,6 +100,7 @@ header a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   padding: 0px 34px 20px;
 }
 
@@ -182,4 +171,32 @@ label {
 
 .card-body-as-p {
   padding: 0px 0px 20px 34px;
+}
+
+@media (max-width: 600px) {
+  .task-wrapper {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "completion title deletion"
+      "description description description";
+  }
+  .task-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 500px) {
+  #search-add-wrapper {
+    flex-direction: column-reverse;
+    padding: 0px 0px 20px 0px;
+    border-bottom: 2px solid var(--task-border-top-color);
+  }
+  #add-link-parent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--task-border-top-color);
+    padding-bottom: 12px;
+  }
 }
