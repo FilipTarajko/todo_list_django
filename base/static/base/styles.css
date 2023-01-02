@@ -1,6 +1,7 @@
 body {
   background-color: var(--body-bgcolor);
   font-family: "Nunito", Arial, Helvetica, sans-serif;
+  margin: 4px;
 }
 
 h1,
@@ -20,6 +21,7 @@ td {
 }
 
 .container {
+  min-width: 300px;
   max-width: 600px;
   margin: auto;
   margin-top: 20px;
@@ -36,6 +38,7 @@ header {
   padding: 16px;
   border-radius: 12px 12px 0 0;
   background: var(--header-gradient);
+  border-bottom: 1px solid var(--task-border-top-color);
 }
 
 header a {
@@ -44,35 +47,53 @@ header a {
 }
 
 .task-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  column-gap: 8px;
+  grid-template-areas: "completion title description deletion";
+  grid-template-columns: auto 2fr 3fr auto;
   padding: 20px;
   background-color: var(--container-bgcolor);
   border-top: 1px solid var(--task-border-top-color);
 }
 
 .task-title {
-  display: flex;
+  display: block;
+  grid-area: title;
+  font-size: 1rem;
 }
 
-.task-title a {
+.task-description {
+  grid-area: description;
+}
+
+@media (max-width: 600px) {
+  .task-wrapper {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "completion title deletion"
+      "description description description";
+  }
+  .task-description {
+    font-size: 0.9rem;
+  }
+}
+
+.text {
   text-decoration: none;
   color: var(--task-title-color);
-  margin-left: 8px;
 }
 
 .task-complete-icon {
   height: 20px;
   width: 20px;
-  background-color: var(--task-circle-complete-color);
+  background-color: var(--task-circle-complete-color) !important;
   border-radius: 50%;
 }
 
 .task-incomplete-icon {
   height: 20px;
   width: 20px;
-  background-color: var(--task-circle-incomplete-color);
+  background-color: var(--task-circle-incomplete-color) !important;
   border-radius: 50%;
 }
 
@@ -123,10 +144,6 @@ label {
   text-decoration: none;
 }
 
-.card-body {
-  padding: 20px;
-}
-
 .settings {
   color: var(--setting-title-color);
 }
@@ -134,4 +151,20 @@ label {
 .settings a {
   color: var(--setting-title-color);
   text-decoration: none;
+  display: block;
+  border-top: 1px solid var(--task-border-top-color);
+  display: flex;
+  padding: 20px 20px;
+}
+
+.settings a:first-child {
+  border-top: 0px;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.card-body {
+  padding: 20px;
 }

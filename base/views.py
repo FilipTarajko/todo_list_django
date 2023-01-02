@@ -14,7 +14,6 @@ from django.core.exceptions import PermissionDenied
 
 def apply_settings(self, context):
   context['users_settings'] = UsersSettings.objects.filter(user=self.request.user)[0]
-  context['display_settings'] = True
   return context
 
 class CustomLoginView(LoginView):
@@ -64,6 +63,7 @@ class TaskList(LoginRequiredMixin, ListView):
     context['totalcount'] = context['tasks'].count()
     context['search_input'] = search_input
 
+    context['display_settings'] = True
     return apply_settings(self, context)
 
 class TaskDetail(LoginRequiredMixin, DetailView):
