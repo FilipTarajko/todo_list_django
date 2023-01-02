@@ -20,4 +20,4 @@ class UsersSettings(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     darkmode = models.BooleanField(default=True)
     hide_completed = models.BooleanField(default=False)
-    high_contrast = models.BooleanField(default=False)
+    high_contrast = models.BooleanField(default=True)
