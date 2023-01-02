@@ -50,8 +50,8 @@ header a {
 .task-wrapper {
   display: grid;
   column-gap: 8px;
-  grid-template-areas: "completion title description deletion";
-  grid-template-columns: auto 2fr 3fr auto;
+  grid-template-areas: "completion deadline title description deletion";
+  grid-template-columns: auto 10ch 2fr 3fr auto;
   padding: 20px 34px;
   background-color: var(--container-bgcolor);
   border-top: 1px solid var(--task-border-top-color);
@@ -179,10 +179,10 @@ label {
 
 @media (max-width: 600px) {
   .task-wrapper {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 10ch 1fr auto;
     grid-template-areas:
-      "completion title deletion"
-      "description description description";
+      "completion deadline title deletion"
+      "description description description description";
   }
   .task-description {
     padding-top: 6px;

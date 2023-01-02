@@ -46,6 +46,9 @@
       <a href="/task-toggle-status/?id={{task.id}}" class="task-incomplete-icon"></a>
       {% endif %}
     </div>
+    <a class="text" style="grid-area: deadline" href="{% url 'task-update' task.id %}">
+      {% if task.deadline %} {{task.deadline|date:"Y-m-d"}} {% else %} no deadline {% endif %}
+    </a>
     <!-- task title and text -->
     {% if task.complete %}
     <a class="task-title text complete" href="{% url 'task-update' task.id %}">{{task}}</a>

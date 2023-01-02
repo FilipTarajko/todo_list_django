@@ -9,12 +9,12 @@
   </div>
   <a href="{% url 'tasks' %}">&#8592; back</a>
 </header>
-<div class="card-body-as-p">
+<div class="card-body-as-p text">
   <form method="POST">
     {% csrf_token %}
     <p>Are you sure you want to delete the "{{task}}" task?</p>
     <input class="button" type="submit" value="Delete" />
-    <a class="button" href="{% url 'tasks' %}">Cancel</a>
+    <a href="{% url 'tasks' %}"><input class="button" type="button" value="Cancel" /></a>
   </form>
 </div>
 

@@ -79,7 +79,7 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
   model = Task
-  fields = ['title', 'description', 'complete']
+  fields = ['title', 'description', 'complete', 'deadline']
   success_url = reverse_lazy('tasks')
 
   def form_valid(self, form):
@@ -92,11 +92,13 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
   model = Task
-  fields = ['title', 'description', 'complete']
+  fields = ['title', 'description', 'complete', 'deadline']
   success_url = reverse_lazy('tasks')
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
+    if context['task'].deadline:
+      context['task'].deadline = context['task'].deadline.strftime("%Y-%m-%d")
     if context["task"].user != self.request.user:
       raise PermissionDenied()
     return apply_settings(self, context)
