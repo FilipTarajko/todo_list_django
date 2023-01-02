@@ -11,10 +11,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito&display=swap" rel="stylesheet" />
-    {% if users_settings.darkmode or not users_settings %}
+    {% if users_settings.darkmode and users_settings.high_contrast %}
+    <link rel="stylesheet" href="{% static 'base/darkmode_contrast_vars.css' %}" />
+    {% elif users_settings.darkmode and not users_setting.high_contrast %}
     <link rel="stylesheet" href="{% static 'base/darkmode_vars.css' %}" />
-    {% else %}
+    {% elif not users_settings.darkmode and users_settings.high_contrast %}
+    <link rel="stylesheet" href="{% static 'base/lightmode_contrast_vars.css' %}" />
+    {% elif not users_settings.darkmode and not users_settings.high_contrast %}
     <link rel="stylesheet" href="{% static 'base/lightmode_vars.css' %}" />
+    {% else %}
+    <link rel="stylesheet" href="{% static 'base/darkmode_vars.css' %}" />
     {% endif %}
     <link rel="stylesheet" href="{% static 'base/styles.css' %}" />
   </head>
@@ -26,6 +32,14 @@
         <h2 style="font-size: 24px">Settings</h2>
       </header>
       <div class="settings">
+        <a href="{% url 'hide_completed' %}">
+          {% if users_settings.hide_completed %}
+          <div class="task-complete-icon"></div>
+          {% else %}
+          <div class="task-incomplete-icon"></div>
+          {% endif %}
+          <div style="padding-left: 8px">hide completed</div>
+        </a>
         <a href="{% url 'theme' %}">
           {% if users_settings.darkmode %}
           <div class="task-complete-icon"></div>
@@ -34,13 +48,13 @@
           {% endif %}
           <div style="padding-left: 8px">dark mode</div>
         </a>
-        <a href="{% url 'hide_completed' %}">
-          {% if users_settings.hide_completed %}
+        <a href="{% url 'contrast' %}">
+          {% if users_settings.high_contrast %}
           <div class="task-complete-icon"></div>
           {% else %}
           <div class="task-incomplete-icon"></div>
           {% endif %}
-          <div style="padding-left: 8px">hide completed</div>
+          <div style="padding-left: 8px">high contrast mode</div>
         </a>
       </div>
     </div>

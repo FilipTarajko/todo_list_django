@@ -1,0 +1,16 @@
+:root {
+  --body-bgcolor: #202225;
+  --container-bgcolor: #3f4146;
+  --header-color: #fff;
+  --header-gradient: linear-gradient(75deg, #232a57 0%, #130952 100%);
+  --task-border-top-color: #2f3235;
+  --task-title-color: #fff;
+  --task-circle-complete-color: rgb(28, 192, 28);
+  --task-circle-incomplete-color: #bbb;
+  --task-delete-cross-color: #ff0000;
+  --task-add-plus-color: #2389f0;
+  --task-add-plus-shadow: 1px 1px #0061c2;
+  --input-theme-color: #0147a1;
+  --button-bgcolor: #eee;
+  --setting-title-color: #fff;
+}

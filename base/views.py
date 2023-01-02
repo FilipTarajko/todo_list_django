@@ -127,6 +127,13 @@ def themeChangeView(request):
     settings.save()
   return redirect('tasks')
   
+def contrastChangeView(request):
+  if UsersSettings.objects.filter(user=request.user).exists():
+    settings = UsersSettings.objects.get(user=request.user)
+    settings.high_contrast = not settings.high_contrast
+    settings.save()
+  return redirect('tasks')
+  
 def toggleHideCompleted(request):
   if UsersSettings.objects.filter(user=request.user).exists():
     settings = UsersSettings.objects.get(user=request.user)
