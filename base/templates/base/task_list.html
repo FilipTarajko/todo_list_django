@@ -26,7 +26,11 @@
     <input type="text" name="search-area" value="{{search_input}}" />
     <input style="margin-left: 4px" class="button" type="submit" value="Search" />
   </form>
-  <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+  <div id="add-link-parent">
+    <a id="add-link" class="text" href="{% url 'task-create' %}"
+      >add task <span id="add-link-plus" style="font-size: 28px; color: var(--task-add-plus-color)">&#x2b;</span></a
+    >
+  </div>
 </div>
 
 <div>

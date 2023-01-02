@@ -7,7 +7,7 @@
   <h1>Log in</h1>
 </header>
 
-<div class="card-body">
+<div class="card-body-as-p">
   <form method="POST">
     {% csrf_token %} {{form.as_p}}
     <input class="button" type="submit" value="Login" />

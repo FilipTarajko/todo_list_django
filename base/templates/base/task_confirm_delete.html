@@ -9,7 +9,7 @@
   </div>
   <a href="{% url 'tasks' %}">&#8592; back</a>
 </header>
-<div class="card-body">
+<div class="card-body-as-p">
   <form method="POST">
     {% csrf_token %}
     <p>Are you sure you want to delete the "{{task}}" task?</p>

@@ -9,15 +9,21 @@
 
 {{form.errors}}
 
-<div class="card-body">
+<div class="card-body-as-p">
   <form method="POST">
     {% csrf_token %}
-    <label>{{form.username.label}}</label>
-    {{form.username}}
-    <label>{{form.password1.label}}</label>
-    {{form.password1}}
-    <label>{{form.password2.label}}</label>
-    {{form.password2}}
+    <p>
+      <label style="margin-top: 10px">{{form.username.label}}:</label>
+      {{form.username}}
+    </p>
+    <p>
+      <label>{{form.password1.label}}:</label>
+      {{form.password1}}
+    </p>
+    <p>
+      <label>{{form.password2.label}}:</label>
+      {{form.password2}}
+    </p>
     <input style="margin-top: 12px" class="button" type="submit" value="Register" />
   </form>
   <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
