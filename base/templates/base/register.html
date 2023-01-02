@@ -14,15 +14,18 @@
     {% csrf_token %}
     <p>
       <label style="margin-top: 10px">{{form.username.label}}:</label>
-      {{form.username}}
+      {% comment %} {{form.username}} {% endcomment %}
+      <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username" />
     </p>
     <p>
       <label>{{form.password1.label}}:</label>
-      {{form.password1}}
+      {% comment %} {{form.password1}} {% endcomment %}
+      <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" />
     </p>
     <p>
       <label>{{form.password2.label}}:</label>
-      {{form.password2}}
+      {% comment %} {{form.password2}} {% endcomment %}
+      <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" />
     </p>
     <input style="margin-top: 12px" class="button" type="submit" value="Register" />
   </form>
