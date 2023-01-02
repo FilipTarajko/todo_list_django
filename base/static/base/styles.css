@@ -135,8 +135,11 @@ label {
 
 .button {
   border: 1px solid var(--input-theme-color);
-  background-color: var(--button-bgcolor);
-  color: var(--input-theme-color);
+  /* background-color: var(--button-bgcolor); */
+  /* color: var(--input-theme-color); */
+
+  background-color: var(--input-bgcolor);
+  color: var(--input-color);
   padding: 10px;
   font-size: 14px;
   border-radius: 5px;
@@ -184,6 +187,13 @@ label {
     padding-top: 6px;
     font-size: 0.9rem;
   }
+}
+
+input,
+textarea,
+button {
+  background-color: var(--input-bgcolor);
+  color: var(--input-color);
 }
 
 @media (max-width: 500px) {

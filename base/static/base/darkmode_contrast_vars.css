@@ -10,7 +10,9 @@
   --task-delete-cross-color: #ff0000;
   --task-add-plus-color: #2389f0;
   --task-add-plus-shadow: 1px 1px #0061c2;
-  --input-theme-color: #0147a1;
+  --input-theme-color: #c7dfff;
   --button-bgcolor: #eee;
   --setting-title-color: #fff;
+  --input-bgcolor: #202225;
+  --input-color: #ffffff;
 }
