@@ -7,12 +7,12 @@
   <h1>Log in</h1>
 </header>
 
-<div class="card-body-as-p">
+<div class="card-body-as-p text">
   <form method="POST">
     {% csrf_token %} {{form.as_p}}
     <input class="button" type="submit" value="Login" />
   </form>
-  <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+  <p>Don't have an account? <a href="{% url 'register' %}" class="text"><u>Register<u></a></p>
 </div>
 
 {% endblock content %}

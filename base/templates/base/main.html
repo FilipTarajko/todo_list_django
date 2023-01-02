@@ -11,7 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito&display=swap" rel="stylesheet" />
-    {% if users_settings.darkmode and users_settings.high_contrast %}
+    {% if not users_settings %}
+    <link rel="stylesheet" href="{% static 'base/darkmode_contrast_vars.css' %}" />
+    {% elif users_settings.darkmode and users_settings.high_contrast %}
     <link rel="stylesheet" href="{% static 'base/darkmode_contrast_vars.css' %}" />
     {% elif users_settings.darkmode and not users_setting.high_contrast %}
     <link rel="stylesheet" href="{% static 'base/darkmode_vars.css' %}" />
