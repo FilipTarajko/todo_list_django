@@ -55,6 +55,18 @@ class TaskList(LoginRequiredMixin, ListView):
     context = super().get_context_data(**kwargs)
     context['tasks'] = context['tasks'].filter(user=self.request.user)
 
+    display_after_date = "1901-01-01" #"2000-12-31"
+    settings = UsersSettings.objects.filter(user=self.request.user)[0]
+    users_display_after_date = settings.users_display_after_date
+    filter_by_deadline = settings.filter_by_deadline
+
+    if filter_by_deadline and users_display_after_date:
+      display_after_date = users_display_after_date
+
+    deadline_after_date = context['tasks'].filter(deadline__gte=display_after_date)
+    without_deadline = context['tasks'].filter(deadline=None)
+    context['tasks'] = deadline_after_date | without_deadline
+
     search_input = self.request.GET.get("search-area") or ''
     if search_input:
       context['tasks'] = context['tasks'].filter(title__icontains=search_input)
@@ -103,6 +115,19 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
       raise PermissionDenied()
     return apply_settings(self, context)
 
+class UserSettingssUpdate(LoginRequiredMixin, UpdateView):
+  model = UsersSettings
+  fields = ['users_display_after_date']
+  success_url = reverse_lazy('tasks')
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    if context['userssettings'].users_display_after_date:
+      context['userssettings'].users_display_after_date = context['userssettings'].users_display_after_date.strftime("%Y-%m-%d")
+    if context["userssettings"].user != self.request.user:
+      raise PermissionDenied()
+    return apply_settings(self, context)
+
 class DeleteView(LoginRequiredMixin, DeleteView):
   model = Task
   context_object_name = 'task'
@@ -140,5 +165,12 @@ def toggleHideCompleted(request):
   if UsersSettings.objects.filter(user=request.user).exists():
     settings = UsersSettings.objects.get(user=request.user)
     settings.hide_completed = not settings.hide_completed
+    settings.save()
+  return redirect('tasks')
+  
+def toggleFilterByDeadline(request):
+  if UsersSettings.objects.filter(user=request.user).exists():
+    settings = UsersSettings.objects.get(user=request.user)
+    settings.filter_by_deadline = not settings.filter_by_deadline
     settings.save()
   return redirect('tasks')

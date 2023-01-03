@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, DeleteView, CustomLoginView, RegisterPage, themeChangeView, toggleHideCompleted, toggleTaskCompleted, contrastChangeView
+from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, DeleteView, CustomLoginView, RegisterPage, themeChangeView, toggleHideCompleted, toggleTaskCompleted, contrastChangeView, toggleFilterByDeadline, UserSettingssUpdate
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -18,4 +18,7 @@ urlpatterns = [
   path('changetheme/', themeChangeView, name='theme'),
   path('changecontrast/', contrastChangeView, name='contrast'),
   path('hide_completed/', toggleHideCompleted, name='hide_completed'),
+  path('filter_by_deadline/', toggleFilterByDeadline, name='filter_by_deadline'),
+  path('users_display_after_date/<int:pk>/', UserSettingssUpdate.as_view(), name='users_display_after_date'),
+  
 ]

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import *
+from django.utils import timezone
 # Create your models here.
 
 class Task(models.Model):
@@ -22,3 +24,5 @@ class UsersSettings(models.Model):
     darkmode = models.BooleanField(default=True)
     hide_completed = models.BooleanField(default=False)
     high_contrast = models.BooleanField(default=True)
+    filter_by_deadline = models.BooleanField(default=True)
+    users_display_after_date = models.DateTimeField(default = timezone.now)

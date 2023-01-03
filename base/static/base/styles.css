@@ -152,7 +152,8 @@ label {
   color: var(--setting-title-color);
 }
 
-.settings a {
+.settings > a,
+.settings > div {
   color: var(--setting-title-color);
   text-decoration: none;
   display: block;
@@ -161,7 +162,8 @@ label {
   padding: 20px 34px;
 }
 
-.settings a:first-child {
+.settings > a:first-child,
+.settings > div:first-child {
   border-top: 0px;
 }
 

@@ -43,6 +43,21 @@
           {% endif %}
           <div style="padding-left: 8px">hide completed</div>
         </a>
+        <div>
+          <a href="{% url 'filter_by_deadline' %}">
+            {% if users_settings.filter_by_deadline %}
+            <div class="task-complete-icon"></div>
+            {% else %}
+            <div class="task-incomplete-icon"></div>
+            {% endif %}
+          </a>
+          <a class="text" href="{% url 'filter_by_deadline' %}" style="padding-left: 8px"
+            >hide tasks with deadline after:&nbsp</a
+          >
+          <a class='text' href="{% url 'users_display_after_date' users_settings.id %}"><u>{{users_settings.users_display_after_date|date:"Y-m-d"}}</u></a>
+          
+          {% comment %} <a href="{% url 'users_display_after_date' users_settings.id %}"><input class="button" style='position: relative; top: -5px; left: 10px; padding: 7px;' type='button' value='change'></input></a> {% endcomment %}
+        </div>
         <a href="{% url 'theme' %}">
           {% if users_settings.darkmode %}
           <div class="task-complete-icon"></div>
