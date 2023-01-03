@@ -9,7 +9,11 @@
 
 <header>
   <div>
+    {% if task.title %}
+    <h1>Update task "{{task.title}}"</h1>
+    {% else %}
     <h1>Add new task</h1>
+    {% endif %}
   </div>
   <a href="{% url 'tasks' %}">&#8592; back</a>
 </header>
