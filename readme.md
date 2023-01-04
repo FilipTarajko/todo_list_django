@@ -1,32 +1,52 @@
-Starting the project as a development server:
+# Basic commands
 
-1. Create a python environment with python and Django:
-   python 3.8.15 + Django 4.1.4 - version used for development
-   python 3.11.1 + Django 4.1.5 - the newest versions the project was tested on
+### Starting the project as a development server:
+
+1. Create a python environment with python and Django:  
+   - python 3.8.15 + Django 4.1.4 - version used for development
+   - python 3.11.1 + Django 4.1.5 - the newest versions the project was tested on
 1. Download and open project files within the environment
-1. in cmd, run: python manage.py migrate
-1. in cmd, run: python manage.py runserver
-   The server should now be running on 127.0.0.1:8000
+1. in cmd, run: `python manage.py migrate`
+1. in cmd, run: `python manage.py runserver`  
+> The server should now be running on 127.0.0.1:8000
 
-Creating a super user and opening administration panel:
+### Creating a super user and opening administration panel:
 
 1. in cmd, run: python manage.py createsuperuser
 1. enter user data according to prompts
 1. run server with python manage.py runserver
-   The administration panel located on 127.0.0.1:8000/admin should now allow access after logging in with previously entered data. Please note that this user is created for administrative purposes and won't be properly initialized for using "standard", non-administrative features of the app. It can hovewer be changed by creating UsersSettings for the superuser account.
+1. The administration panel located on 127.0.0.1:8000/admin should now allow access after logging in with previously entered data.  
+> **Please note** that this user is created for administrative purposes and won't be properly initialized for using "standard", non-administrative features of the app. It can hovewer be changed by creating UsersSettings for the superuser account.
 
-Running project after initial setup:
+### Running project after initial setup:
+```
 python manage.py runserver
+```
 
-Setting up migrations after changes in models:
+### Setting up migrations after changes in models:
+```
 python manage.py makemigrations
 python manage.py migrate
+```
 
-Data is stored using 3 models (classes defining data stored in DB):
+# Design, features and details
+
+### Nonexhaustive list of features:
+- user registration and authorization based on Django's built-in solutions
+- tasks stored in database
+   - tasks can be created by any user, and are "owned" and only visible to their creator
+   - all CRUD actions are available to the task's creator
+   - users have no access to tasks they didn't create (403 Forbidden)
+- settings stored in database, allowing for:
+   - changing graphical themes (by adding different files with CSS variables to pages sent to browser)
+   - filtering completed tasks
+   - filtering tasks having deadline before any given date
+
+### Data is stored using 3 models (classes defining data stored in DB):
 
 - User - Django's built-in user model user for authentication
 - Task - task model containing various data about tasks:
-  - user - foreign key of user that owns the task
+  - user - foreign key of user that created and "owns" the task
   - title - title of the task
   - description - (optional) text field user for storing any additional text data about the task
   - complete - boolean field, can be used for task filtering
