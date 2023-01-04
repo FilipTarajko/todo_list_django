@@ -52,7 +52,7 @@
             {% endif %}
           </a>
           <a class="text" href="{% url 'filter_by_deadline' %}" style="padding-left: 8px"
-            >hide tasks with deadline after:&nbsp</a
+            >hide tasks with deadline before:&nbsp</a
           >
           <a class='text' href="{% url 'users_display_after_date' users_settings.id %}"><u>{{users_settings.users_display_after_date|date:"Y-m-d"}}</u></a>
           
