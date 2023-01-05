@@ -87,9 +87,9 @@ python manage.py migrate
 ### Hiding by deadline
 
 ![before filtering by deadline](screenshots/dark_contrast.png "before filtering by deadline")
-![setting deadline filter](screenshots/hide_by_deadline0.png)
-![turning filtering by deadline on](screenshots/hide_completed_1.png)
-![deadline filtering result](screenshots/hide_by_deadline.png)
+![setting deadline filter](screenshots/hide_by_deadline0.png "setting deadline filter")
+![turning filtering by deadline on](screenshots/hide_completed_1.png "turning filtering by deadline on")
+![deadline filtering result](screenshots/hide_by_deadline.png "deadline filtering result")
 
 ### Hiding completed
 
@@ -98,23 +98,23 @@ python manage.py migrate
 
 ### Login client-side validation
 
-![login client-side validation - no password](screenshots/login_validation.png)
+![login client-side validation - no password](screenshots/login_validation.png "login client-side validation - no password")
 
 ### Registration client-side validation
 
-![registration client-side validation - too short password](screenshots/register_validation1.png)
-![registration client-side validation - digits-only password](screenshots/register_validation2.png)
+![registration client-side validation - too short password](screenshots/register_validation1.png "registration client-side validation - too short password")
+![registration client-side validation - digits-only password](screenshots/register_validation2.png "registration client-side validation - digits-only password")
 
 ### Filtering task by title
 
-![before filtering](screenshots/text%20filtering.png)
-![after filtering](screenshots/text%20filtering2.png)
+![before filtering](screenshots/text%20filtering.png "before filtering")
+![after filtering](screenshots/text%20filtering2.png "after filtering")
 
 ### Updating an existing task
 
-![before updating](screenshots/task_deletion2.png)
-![updating form - initial](screenshots/update_task.png)
-![updating form - with changes](screenshots/update_task_2.png)
+![before updating](screenshots/task_deletion2.png "before updating"")
+![updating form - initial](screenshots/update_task.png "updating form - initial")
+![updating form - with changes](screenshots/update_task_2.png "updating form - with changes")
 ![result of updating](screenshots/update_task_3.png "result of updating")
 
 ### Normal and dense layout
