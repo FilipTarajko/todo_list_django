@@ -88,7 +88,7 @@ python manage.py migrate
 
 ![before filtering by deadline](screenshots/dark_contrast.png "before filtering by deadline")
 ![setting deadline filter](screenshots/hide_by_deadline0.png "setting deadline filter")
-![turning filtering by deadline on](screenshots/hide_completed_1.png "turning filtering by deadline on")
+![after setting filter but before activation](screenshots/hide_completed_1.png "after setting filter but before activation")
 ![deadline filtering result](screenshots/hide_by_deadline.png "deadline filtering result")
 
 ### Hiding completed
@@ -112,7 +112,7 @@ python manage.py migrate
 
 ### Updating an existing task
 
-![before updating](screenshots/task_deletion2.png "before updating"")
+![before updating](screenshots/task_deletion2.png "before updating")
 ![updating form - initial](screenshots/update_task.png "updating form - initial")
 ![updating form - with changes](screenshots/update_task_2.png "updating form - with changes")
 ![result of updating](screenshots/update_task_3.png "result of updating")
