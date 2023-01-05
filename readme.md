@@ -67,34 +67,34 @@ python manage.py migrate
 
 ### Adding new task
 
-![before task creation](screenshots/task_deletion2.png)
-![task creation form](screenshots/add_new_task.png)
-![task creation result](screenshots/add_new_task2.png)
+![before task creation](screenshots/task_deletion2.png "before task creation")
+![task creation form](screenshots/add_new_task.png "task creation form")
+![task creation result](screenshots/add_new_task2.png "task creation result")
 
 ### Task deletion
 
-![before task deletion](screenshots/add_new_task2.png)
-![task deletion screen](screenshots/task_deletion.png)
-![task deletion result](screenshots/task_deletion2.png)
+![before task deletion](screenshots/add_new_task2.png "before task deletion")
+![task deletion screen](screenshots/task_deletion.png "task deletion screen")
+![task deletion result](screenshots/task_deletion2.png "task deletion result")
 
 ### Themes
 
-![dark theme with high contrast](screenshots/dark_contrast.png)
-![dark theme](screenshots/dark.png)
-![light theme](screenshots/light.png)
-![light theme with high contrast](screenshots/light_contrast.png)
+![dark theme with high contrast](screenshots/dark_contrast.png "dark theme with high contrast")
+![dark theme](screenshots/dark.png "dark theme")
+![light theme](screenshots/light.png "light theme")
+![light theme with high contrast](screenshots/light_contrast.png "light theme with high contrast")
 
 ### Hiding by deadline
 
-![before filtering by deadline](screenshots/dark_contrast.png)
+![before filtering by deadline](screenshots/dark_contrast.png "before filtering by deadline")
 ![setting deadline filter](screenshots/hide_by_deadline0.png)
 ![turning filtering by deadline on](screenshots/hide_completed_1.png)
 ![deadline filtering result](screenshots/hide_by_deadline.png)
 
 ### Hiding completed
 
-![before hiding](screenshots/hide_completed_1.png)
-![after hiding](screenshots/hide_completed_2.png)
+![before hiding](screenshots/hide_completed_1.png "before hiding")
+![after hiding](screenshots/hide_completed_2.png "after hiding")
 
 ### Login client-side validation
 
@@ -107,12 +107,17 @@ python manage.py migrate
 
 ### Filtering task by title
 
-![Alt text](screenshots/text%20filtering.png)
-![Alt text](screenshots/text%20filtering2.png)
+![before filtering](screenshots/text%20filtering.png)
+![after filtering](screenshots/text%20filtering2.png)
 
 ### Updating an existing task
 
 ![before updating](screenshots/task_deletion2.png)
 ![updating form - initial](screenshots/update_task.png)
 ![updating form - with changes](screenshots/update_task_2.png)
-![result of updating](screenshots/update_task_3.png)
+![result of updating](screenshots/update_task_3.png "result of updating")
+
+### Normal and dense layout
+
+![Normal layout](screenshots/normal_layout.png "Normal layout")
+![Dense layout](screenshots/dense_layout.png "Dense layout")
