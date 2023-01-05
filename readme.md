@@ -63,7 +63,7 @@ python manage.py migrate
   - filter_by_deadline - boolean field for turning task filtration by deadline on/off
   - users_display_after_day - datetime field based on which the task-by-deadline filtration takes place when filter_by_deadline is set to True
 
-# Examples
+# Examples (screenshots with hovertext)
 
 ### Adding new task
 
