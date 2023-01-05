@@ -23,7 +23,7 @@
     {% endcomment %}
     <p>
       <label style="margin-top: 10px">
-        {% comment %} {{form.users_display_after_date.label}} {% endcomment %} Only display tasks with deadline after :</label
+        {% comment %} {{form.users_display_after_date.label}} {% endcomment %} Hide tasks with deadline before :</label
       >
       {% comment %} {{form.users_display_after_date}} {% endcomment %}
       <input type="date" name="users_display_after_date" value="{{userssettings.users_display_after_date}}" id="id_users_display_after_date" />
