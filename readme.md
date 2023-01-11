@@ -66,25 +66,25 @@ python manage.py migrate
 ### File structure
 
 ```py
-base        # core of Django app (module)
-  ├─ migrations     # database migrations
-  ├─ static/base    # favicon and CSS files
-  ├─ templates/base # templates for rendering
-  ├─ admin.py       # adds models to admin panel
-  ├─ models.py      # definitions of models
-  ├─ urls.py        # app-wide URL path management
-  ├─ views.py       # logic used by URL paths
-  └─ ...            # various Django app files
-screenshots # folder with screenshots for readme
-todo_list   # core of Django project
-  ├─ settings.py    # project's settings
-  ├─ urls.py        # URL path management
-  └─ ...            # various Django project files
-.gitattributes
-.gitignore
-db.sqlite3  # embedded SQLite database
-manage.py   # Django’s command-line utilities
-readme.md   # source of this readme
+├─ base        # core of Django app (module)
+│    ├─ migrations     # database migrations
+│    ├─ static/base    # favicon and CSS files
+│    ├─ templates/base # templates for rendering
+│    ├─ admin.py       # adds models to admin panel
+│    ├─ models.py      # definitions of models
+│    ├─ urls.py        # app-wide URL path management
+│    ├─ views.py       # logic used by URL paths
+│    └─ ...            # various Django app files
+├─ screenshots # folder with screenshots for readme
+├─ todo_list   # core of Django project
+│    ├─ settings.py    # project's settings
+│    ├─ urls.py        # URL path management
+│    └─ ...            # various Django project files
+├─ .gitattributes
+├─ .gitignore
+├─ db.sqlite3  # embedded SQLite database
+├─ manage.py   # Django’s command-line utilities
+└─ readme.md   # source of this readme
 ```
 
 # Examples (screenshots with hovertext)
