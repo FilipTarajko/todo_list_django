@@ -68,14 +68,13 @@ python manage.py migrate
 ```py
 ├─ base        # core of Django app (module)
 │    ├─ migrations     # database migrations
-│    ├─ static/base    # favicon and CSS files
+│    ├─ static/base    # favicon, screenshots and CSS
 │    ├─ templates/base # templates for rendering
 │    ├─ admin.py       # adds models to admin panel
 │    ├─ models.py      # definitions of models
 │    ├─ urls.py        # app-wide URL path management
 │    ├─ views.py       # logic used by URL paths
 │    └─ ...            # various Django app files
-├─ screenshots # folder with screenshots for readme
 ├─ todo_list   # core of Django project
 │    ├─ settings.py    # project's settings
 │    ├─ urls.py        # URL path management
@@ -84,64 +83,64 @@ python manage.py migrate
 ├─ .gitignore
 ├─ db.sqlite3  # embedded SQLite database
 ├─ manage.py   # Django’s command-line utilities
-└─ readme.md   # source of this readme
+└─ readme.md
 ```
 
 # Examples (screenshots with hovertext)
 
 ### Adding new task
 
-![before task creation](screenshots/task_deletion2.png "before task creation")
-![task creation form](screenshots/add_new_task.png "task creation form")
-![task creation result](screenshots/add_new_task2.png "task creation result")
+![before task creation](base/static/base/screenshots/task_deletion2.png "before task creation")
+![task creation form](base/static/base/screenshots/add_new_task.png "task creation form")
+![task creation result](base/static/base/screenshots/add_new_task2.png "task creation result")
 
 ### Task deletion
 
-![before task deletion](screenshots/add_new_task2.png "before task deletion")
-![task deletion screen](screenshots/task_deletion.png "task deletion screen")
-![task deletion result](screenshots/task_deletion2.png "task deletion result")
+![before task deletion](base/static/base/screenshots/add_new_task2.png "before task deletion")
+![task deletion screen](base/static/base/screenshots/task_deletion.png "task deletion screen")
+![task deletion result](base/static/base/screenshots/task_deletion2.png "task deletion result")
 
 ### Themes
 
-![dark theme with high contrast](screenshots/dark_contrast.png "dark theme with high contrast")
-![dark theme](screenshots/dark.png "dark theme")
-![light theme](screenshots/light.png "light theme")
-![light theme with high contrast](screenshots/light_contrast.png "light theme with high contrast")
+![dark theme with high contrast](base/static/base/screenshots/dark_contrast.png "dark theme with high contrast")
+![dark theme](base/static/base/screenshots/dark.png "dark theme")
+![light theme](base/static/base/screenshots/light.png "light theme")
+![light theme with high contrast](base/static/base/screenshots/light_contrast.png "light theme with high contrast")
 
 ### Hiding by deadline
 
-![before filtering by deadline](screenshots/dark_contrast.png "before filtering by deadline")
-![setting deadline filter](screenshots/hide_by_deadline0.png "setting deadline filter")
-![after setting filter but before activation](screenshots/hide_completed_1.png "after setting filter but before activation")
-![deadline filtering result](screenshots/hide_by_deadline.png "deadline filtering result")
+![before filtering by deadline](base/static/base/screenshots/dark_contrast.png "before filtering by deadline")
+![setting deadline filter](base/static/base/screenshots/hide_by_deadline0.png "setting deadline filter")
+![after setting filter but before activation](base/static/base/screenshots/hide_completed_1.png "after setting filter but before activation")
+![deadline filtering result](base/static/base/screenshots/hide_by_deadline.png "deadline filtering result")
 
 ### Hiding completed
 
-![before hiding](screenshots/hide_completed_1.png "before hiding")
-![after hiding](screenshots/hide_completed_2.png "after hiding")
+![before hiding](base/static/base/screenshots/hide_completed_1.png "before hiding")
+![after hiding](base/static/base/screenshots/hide_completed_2.png "after hiding")
 
 ### Login client-side validation
 
-![login client-side validation - no password](screenshots/login_validation.png "login client-side validation - no password")
+![login client-side validation - no password](base/static/base/screenshots/login_validation.png "login client-side validation - no password")
 
 ### Registration client-side validation
 
-![registration client-side validation - too short password](screenshots/register_validation1.png "registration client-side validation - too short password")
-![registration client-side validation - digits-only password](screenshots/register_validation2.png "registration client-side validation - digits-only password")
+![registration client-side validation - too short password](base/static/base/screenshots/register_validation1.png "registration client-side validation - too short password")
+![registration client-side validation - digits-only password](base/static/base/screenshots/register_validation2.png "registration client-side validation - digits-only password")
 
 ### Filtering task by title
 
-![before filtering](screenshots/text%20filtering.png "before filtering")
-![after filtering](screenshots/text%20filtering2.png "after filtering")
+![before filtering](base/static/base/screenshots/text%20filtering.png "before filtering")
+![after filtering](base/static/base/screenshots/text%20filtering2.png "after filtering")
 
 ### Updating an existing task
 
-![before updating](screenshots/task_deletion2.png "before updating")
-![updating form - initial](screenshots/update_task.png "updating form - initial")
-![updating form - with changes](screenshots/update_task_2.png "updating form - with changes")
-![result of updating](screenshots/update_task_3.png "result of updating")
+![before updating](base/static/base/screenshots/task_deletion2.png "before updating")
+![updating form - initial](base/static/base/screenshots/update_task.png "updating form - initial")
+![updating form - with changes](base/static/base/screenshots/update_task_2.png "updating form - with changes")
+![result of updating](base/static/base/screenshots/update_task_3.png "result of updating")
 
 ### Normal and dense layout
 
-![Normal layout](screenshots/normal_layout.png "Normal layout")
-![Dense layout](screenshots/dense_layout.png "Dense layout")
+![Normal layout](base/static/base/screenshots/normal_layout.png "Normal layout")
+![Dense layout](base/static/base/screenshots/dense_layout.png "Dense layout")

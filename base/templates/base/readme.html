@@ -1,0 +1,253 @@
+{% extends 'base/main.html' %}
+<!-- displaying the view as content of base/main.html -->
+{% block content %}
+<!-- content -->
+{% load static %}
+
+<header>
+  <h2 style="font-size: 2.4rem">README</h2>
+  <a href="{% url 'tasks' %}">&#8592; back</a>
+</header>
+
+{% comment %}
+<!--
+
+TO UPDATE THIS PAGE:
+
+1. put readme.md into https://markdowntohtml.com
+
+2. in resulting raw html, replace all:
+
+FROM: img src="base/static/
+INTO: img class="screenshot" src="{% static '
+
+FROM: .png"
+INTO: .png' %}" 
+
+3. paste into:
+<div id="readme">RESULT</div>{% endblock content %}
+
+-->
+{% endcomment %}
+
+<div id="readme">
+  <h1 id="basic-commands">Basic commands</h1>
+  <h3 id="starting-the-project-as-a-development-server-">Starting the project as a development server:</h3>
+  <ol>
+    <li>
+      Create a python environment with python and Django:
+      <ul>
+        <li>python 3.8.15 + Django 4.1.4 - version used for development</li>
+        <li>python 3.11.1 + Django 4.1.5 - the newest versions the project was tested on</li>
+      </ul>
+    </li>
+    <li>Download and open project files within the environment</li>
+    <li>in cmd, run: <code>python manage.py migrate</code></li>
+    <li>
+      in cmd, run: <code>python manage.py runserver</code>
+      <blockquote>
+        <p>The server should now be running on 127.0.0.1:8000</p>
+      </blockquote>
+    </li>
+  </ol>
+  <h3 id="creating-a-super-user-and-opening-administration-panel-">Creating a super user and opening administration panel:</h3>
+  <ol>
+    <li>in cmd, run: python manage.py createsuperuser</li>
+    <li>enter user data according to prompts</li>
+    <li>run server with python manage.py runserver</li>
+    <li>
+      The administration panel located on 127.0.0.1:8000/admin should now allow access after logging in with previously entered data.
+      <blockquote>
+        <p>
+          <strong>Please note</strong> that this user is created for administrative purposes and won&#39;t be properly initialized for using
+          &quot;standard&quot;, non-administrative features of the app. It can hovewer be changed by creating UsersSettings for the superuser account.
+        </p>
+      </blockquote>
+    </li>
+  </ol>
+  <h3 id="running-project-after-initial-setup-">Running project after initial setup:</h3>
+  <pre><code>python manage<span class="hljs-selector-class">.py</span> runserver
+</code></pre>
+  <h3 id="setting-up-migrations-after-changes-in-models-">Setting up migrations after changes in models:</h3>
+  <pre><code>python manage<span class="hljs-selector-class">.py</span> makemigrations
+python manage<span class="hljs-selector-class">.py</span> migrate
+</code></pre>
+  <h1 id="design-features-and-details">Design, features and details</h1>
+  <h3 id="nonexhaustive-list-of-features-">Nonexhaustive list of features:</h3>
+  <ul>
+    <li>user registration and authorization based on Django&#39;s built-in solutions</li>
+    <li>
+      tasks stored in database
+      <ul>
+        <li>tasks can be created by any user, and are &quot;owned&quot; and only visible to their creator</li>
+        <li>all CRUD actions are available to the task&#39;s creator</li>
+        <li>users have no access to tasks they didn&#39;t create (403 Forbidden)</li>
+      </ul>
+    </li>
+    <li>
+      settings stored in database, allowing for:
+      <ul>
+        <li>changing graphical themes (by adding different files with CSS variables to pages sent to browser)</li>
+        <li>filtering completed tasks</li>
+        <li>filtering tasks having deadline before any given date</li>
+      </ul>
+    </li>
+  </ul>
+  <h3 id="data-is-stored-using-3-models-classes-defining-data-stored-in-db-">Data is stored using 3 models (classes defining data stored in DB):</h3>
+  <ul>
+    <li>User - Django&#39;s built-in user model user for authentication</li>
+    <li>
+      Task - task model containing various data about tasks:
+      <ul>
+        <li>user - foreign key of user that created and &quot;owns&quot; the task</li>
+        <li>title - title of the task</li>
+        <li>description - (optional) text field user for storing any additional text data about the task</li>
+        <li>complete - boolean field, can be used for task filtering</li>
+        <li>deadline - (optional) deadline date that can be later used for task filtering</li>
+        <li>created - automatically filled date of task creation</li>
+      </ul>
+    </li>
+    <li>
+      UsersSettings
+      <ul>
+        <li>user - foreign key of user whose settings are being stored in the object</li>
+        <li>darkmode - boolean field for switching between light and dark themes</li>
+        <li>hide_complete - boolean field for hiding tasks with True in &quot;complete&quot; field</li>
+        <li>high_contrast - boolean field for switching between normal- and high-contrast themes</li>
+        <li>filter_by_deadline - boolean field for turning task filtration by deadline on/off</li>
+        <li>
+          users_display_after_day - datetime field based on which the task-by-deadline filtration takes place when filter_by_deadline is set to True
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h3 id="file-structure">File structure</h3>
+  <pre><code class="lang-py">├─ <span class="hljs-keyword">base</span>        <span class="hljs-meta"># core of Django app (module)</span>
+│    ├─ migrations     <span class="hljs-meta"># database migrations</span>
+│    ├─ <span class="hljs-keyword">static</span>/<span class="hljs-keyword">base</span>    <span class="hljs-meta"># favicon, screenshots and CSS</span>
+│    ├─ templates/<span class="hljs-keyword">base</span> <span class="hljs-meta"># templates for rendering</span>
+│    ├─ admin.py       <span class="hljs-meta"># adds models to admin panel</span>
+│    ├─ models.py      <span class="hljs-meta"># definitions of models</span>
+│    ├─ urls.py        <span class="hljs-meta"># app-wide URL path management</span>
+│    ├─ views.py       <span class="hljs-meta"># logic used by URL paths</span>
+│    └─ ...            <span class="hljs-meta"># various Django app files</span>
+├─ todo_list   <span class="hljs-meta"># core of Django project</span>
+│    ├─ settings.py    <span class="hljs-meta"># project's settings</span>
+│    ├─ urls.py        <span class="hljs-meta"># URL path management</span>
+│    └─ ...            <span class="hljs-meta"># various Django project files</span>
+├─ .gitattributes
+├─ .gitignore
+├─ db.sqlite3  <span class="hljs-meta"># embedded SQLite database</span>
+├─ manage.py   <span class="hljs-meta"># Django’s command-<span class="hljs-meta-keyword">line</span> utilities</span>
+└─ readme.md
+</code></pre>
+  <h1 id="examples-screenshots-with-hovertext-">Examples (screenshots with hovertext)</h1>
+  <h3 id="adding-new-task">Adding new task</h3>
+  <p>
+    <img class="screenshot" src="{% static 'base/screenshots/task_deletion2.png' %}" alt="before task creation" title="before task creation" />
+    <img class="screenshot" src="{% static 'base/screenshots/add_new_task.png' %}" alt="task creation form" title="task creation form" />
+    <img class="screenshot" src="{% static 'base/screenshots/add_new_task2.png' %}" alt="task creation result" title="task creation result" />
+  </p>
+  <h3 id="task-deletion">Task deletion</h3>
+  <p>
+    <img class="screenshot" src="{% static 'base/screenshots/add_new_task2.png' %}" alt="before task deletion" title="before task deletion" />
+    <img class="screenshot" src="{% static 'base/screenshots/task_deletion.png' %}" alt="task deletion screen" title="task deletion screen" />
+    <img class="screenshot" src="{% static 'base/screenshots/task_deletion2.png' %}" alt="task deletion result" title="task deletion result" />
+  </p>
+  <h3 id="themes">Themes</h3>
+  <p>
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/dark_contrast.png' %}"
+      alt="dark theme with high contrast"
+      title="dark theme with high contrast"
+    />
+    <img class="screenshot" src="{% static 'base/screenshots/dark.png' %}" alt="dark theme" title="dark theme" />
+    <img class="screenshot" src="{% static 'base/screenshots/light.png' %}" alt="light theme" title="light theme" />
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/light_contrast.png' %}"
+      alt="light theme with high contrast"
+      title="light theme with high contrast"
+    />
+  </p>
+  <h3 id="hiding-by-deadline">Hiding by deadline</h3>
+  <p>
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/dark_contrast.png' %}"
+      alt="before filtering by deadline"
+      title="before filtering by deadline"
+    />
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/hide_by_deadline0.png' %}"
+      alt="setting deadline filter"
+      title="setting deadline filter"
+    />
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/hide_completed_1.png' %}"
+      alt="after setting filter but before activation"
+      title="after setting filter but before activation"
+    />
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/hide_by_deadline.png' %}"
+      alt="deadline filtering result"
+      title="deadline filtering result"
+    />
+  </p>
+  <h3 id="hiding-completed">Hiding completed</h3>
+  <p>
+    <img class="screenshot" src="{% static 'base/screenshots/hide_completed_1.png' %}" alt="before hiding" title="before hiding" />
+    <img class="screenshot" src="{% static 'base/screenshots/hide_completed_2.png' %}" alt="after hiding" title="after hiding" />
+  </p>
+  <h3 id="login-client-side-validation">Login client-side validation</h3>
+  <p>
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/login_validation.png' %}"
+      alt="login client-side validation - no password"
+      title="login client-side validation - no password"
+    />
+  </p>
+  <h3 id="registration-client-side-validation">Registration client-side validation</h3>
+  <p>
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/register_validation1.png' %}"
+      alt="registration client-side validation - too short password"
+      title="registration client-side validation - too short password"
+    />
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/register_validation2.png' %}"
+      alt="registration client-side validation - digits-only password"
+      title="registration client-side validation - digits-only password"
+    />
+  </p>
+  <h3 id="filtering-task-by-title">Filtering task by title</h3>
+  <p>
+    <img class="screenshot" src="{% static 'base/screenshots/text%20filtering.png' %}" alt="before filtering" title="before filtering" />
+    <img class="screenshot" src="{% static 'base/screenshots/text%20filtering2.png' %}" alt="after filtering" title="after filtering" />
+  </p>
+  <h3 id="updating-an-existing-task">Updating an existing task</h3>
+  <p>
+    <img class="screenshot" src="{% static 'base/screenshots/task_deletion2.png' %}" alt="before updating" title="before updating" />
+    <img class="screenshot" src="{% static 'base/screenshots/update_task.png' %}" alt="updating form - initial" title="updating form - initial" />
+    <img
+      class="screenshot"
+      src="{% static 'base/screenshots/update_task_2.png' %}"
+      alt="updating form - with changes"
+      title="updating form - with changes"
+    />
+    <img class="screenshot" src="{% static 'base/screenshots/update_task_3.png' %}" alt="result of updating" title="result of updating" />
+  </p>
+  <h3 id="normal-and-dense-layout">Normal and dense layout</h3>
+  <p>
+    <img class="screenshot" src="{% static 'base/screenshots/normal_layout.png' %}" alt="Normal layout" title="Normal layout" />
+    <img class="screenshot" src="{% static 'base/screenshots/dense_layout.png' %}" alt="Dense layout" title="Dense layout" />
+  </p>
+</div>
+{% endblock content %}

@@ -12,7 +12,9 @@
     {% csrf_token %} {{form.as_p}}
     <input class="button" type="submit" value="Login" />
   </form>
-  <p>Don't have an account? <a href="{% url 'register' %}" class="text"><u>Register<u></a></p>
+  <p>
+    Don't have an account? <a href="{% url 'register' %}" class="text"><u>Register</u></a>
+  </p>
 </div>
 
 {% endblock content %}

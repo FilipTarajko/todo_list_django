@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, DeleteView, CustomLoginView, RegisterPage, themeChangeView, toggleHideCompleted, toggleTaskCompleted, contrastChangeView, toggleFilterByDeadline, UserSettingssUpdate
+from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, DeleteView, CustomLoginView, RegisterPage, themeChangeView, toggleHideCompleted, toggleTaskCompleted, contrastChangeView, toggleFilterByDeadline, UserSettingssUpdate, readmeView
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -21,4 +21,6 @@ urlpatterns = [
   path('filter_by_deadline/', toggleFilterByDeadline, name='filter_by_deadline'),
   path('users_display_after_date/<int:pk>/', UserSettingssUpdate.as_view(), name='users_display_after_date'),
   
+
+  path('readme', readmeView, name='readme')
 ]

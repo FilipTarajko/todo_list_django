@@ -174,3 +174,11 @@ def toggleFilterByDeadline(request):
     settings.filter_by_deadline = not settings.filter_by_deadline
     settings.save()
   return redirect('tasks')
+
+def readmeView(request):
+  context = {}
+  context['hide_footer'] = True
+  # context['display_settings'] = True
+  if request.user.is_authenticated:
+    context['users_settings'] = UsersSettings.objects.filter(user=request.user)[0]
+  return render(request, '../templates/base/readme.html', context=context)
